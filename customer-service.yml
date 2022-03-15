@@ -3,5 +3,5 @@ server:
 spring:
   data:
     mongodb:
-      uri: mongodb://localhost/checking
-      database: checking
+      uri: mongodb://localhost/customer
+      database: customer
