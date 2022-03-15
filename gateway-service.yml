@@ -1,20 +1,30 @@
 server:
   port: 8080
 spring:
-  application:
-    name: GatewayService
   cloud:
     gateway:
       routes:
+        - id: customer
+          uri: lb://CUSTOMER-SERVICE
+          predicates:
+            - Path=/customer/**
+          filters:
+            - RewritePath=/customer/(?<segment>.*), /$\{segment}
+        - id: order
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/order/**
+          filters:
+            - RewritePath=/order/(?<segment>.*), /$\{segment}
         - id: product
-          uri: lb://PRODUCTSERVICE
+          uri: lb://PRODUCT-SERVICE
           predicates:
             - Path=/product/**
           filters:
             - RewritePath=/product/(?<segment>.*), /$\{segment}
-        - id: stock
-          uri: lb://STOCKSERVICE
+        - id: shopping-cart
+          uri: lb://SHOPPING-CART-SERVICE
           predicates:
-            - Path=/stock/**
+            - Path=/cart/**
           filters:
-            - RewritePath=/stock/(?<segment>.*), /$\{segment}
+            - RewritePath=/cart/(?<segment>.*), /$\{segment}
