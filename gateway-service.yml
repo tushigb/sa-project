@@ -1,2 +1,20 @@
 server:
   port: 8080
+spring:
+  application:
+    name: GatewayService
+  cloud:
+    gateway:
+      routes:
+        - id: product
+          uri: lb://PRODUCTSERVICE
+          predicates:
+            - Path=/product/**
+          filters:
+            - RewritePath=/product/(?<segment>.*), /$\{segment}
+        - id: stock
+          uri: lb://STOCKSERVICE
+          predicates:
+            - Path=/stock/**
+          filters:
+            - RewritePath=/stock/(?<segment>.*), /$\{segment}
