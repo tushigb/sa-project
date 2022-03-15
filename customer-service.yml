@@ -1,7 +1,7 @@
 server:
   port: 8080
-spring
-  data
-    mongodb
+spring:
+  data:
+    mongodb:
       uri: mongodb://localhost/checking
       database: checking
