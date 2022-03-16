@@ -1,6 +1,10 @@
 server:
   port: 8084
 spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost/shopping-cart-read
+      database: shopping-cart-read
   kafka:
     consumer:
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
