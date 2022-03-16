@@ -2,5 +2,15 @@ server:
   port: 8084
 spring:
   kafka:
-    producer:
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            value:
+              default:
+                type: 'edu.miu.shoppingcartquery.entity.ShoppingCart'
+            type:
+              mapping: 'edu.miu.shoppingcartcommand.entity.ShoppingCart:edu.miu.shoppingcartquery.entity.ShoppingCart'
+            trusted:
+              packages: '*'
