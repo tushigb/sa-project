@@ -23,7 +23,7 @@ spring:
           filters:
             - RewritePath=/product/(?<segment>.*), /$\{segment}
         - id: shopping-cart
-          uri: lb://SHOPPING-CART-SERVICE
+          uri: lb://SHOPPING-CART-COMMAND-SERVICE
           predicates:
             - Path=/cart/command/**
           filters:
