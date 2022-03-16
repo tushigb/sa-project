@@ -7,4 +7,11 @@ spring:
       database: shopping-cart
   kafka:
     producer:
+      properties:
+        acks: 1
+        spring:
+          json:
+            add:
+              type:
+                headers: false
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
