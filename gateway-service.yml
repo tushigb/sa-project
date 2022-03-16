@@ -22,9 +22,15 @@ spring:
             - Path=/product/**
           filters:
             - RewritePath=/product/(?<segment>.*), /$\{segment}
-        - id: shopping-cart
+        - id: shopping-cart-command
           uri: lb://SHOPPING-CART-COMMAND-SERVICE
           predicates:
             - Path=/cart/command/**
           filters:
             - RewritePath=/cart/command/(?<segment>.*), /$\{segment}
+        - id: shopping-cart-query
+          uri: lb://SHOPPING-CART-QUERY-SERVICE
+          predicates:
+            - Path=/cart/read/**
+          filters:
+            - RewritePath=/cart/read/(?<segment>.*), /$\{segment}
