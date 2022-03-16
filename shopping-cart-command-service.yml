@@ -1,0 +1,10 @@
+server:
+  port: 8083
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost/shopping-cart
+      database: shopping-cart
+  kafka:
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
