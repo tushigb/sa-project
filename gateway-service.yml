@@ -25,6 +25,6 @@ spring:
         - id: shopping-cart
           uri: lb://SHOPPING-CART-SERVICE
           predicates:
-            - Path=/cart/**
+            - Path=/cart/command/**
           filters:
-            - RewritePath=/cart/(?<segment>.*), /$\{segment}
+            - RewritePath=/cart/command/(?<segment>.*), /$\{segment}
